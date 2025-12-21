@@ -1,0 +1,79 @@
+SYLLABUS-BOT PROJECT STRUCTURE
+============================
+
+Root Directory (/front-end)
+--------------------------
+├── src/                    # Source code
+├── public/                 # Static files
+├── node_modules/           # Dependencies
+├── package.json           # Project configuration
+├── package-lock.json      # Dependency lock file
+├── vite.config.js         # Vite configuration
+├── tailwind.config.cjs    # Tailwind CSS configuration
+├── postcss.config.cjs     # PostCSS configuration
+├── index.html             # Entry HTML file
+├── .gitignore             # Git ignore rules
+├── .gitattributes         # Git attributes
+├── LICENSE                # Project license
+└── README.md              # Project documentation
+
+Source Code (/src)
+-----------------
+├── App.jsx                # Root component
+├── main.jsx              # Application entry point
+├── firebase.js           # Firebase configuration
+├── index.css             # Global styles
+
+├── user/                 # User section
+│   ├── components/       # User UI components
+│   ├── layouts/         # User layouts
+│   ├── auth/            # User authentication
+│   ├── pages/           # User pages
+│   └── utils/           # User utilities
+
+├── admin/               # Admin section
+│   ├── layouts/         # Admin layouts
+│   ├── auth/            # Admin authentication
+│   └── pages/           # Admin pages
+
+├── routes/              # Routing
+│   ├── UserRoutes.jsx   # User routes
+│   └── AdminRoutes.jsx  # Admin routes
+
+├── utils/               # Shared utilities
+├── styles/              # Shared styles
+├── hooks/               # Custom hooks
+├── context/             # Context providers
+└── assets/              # Static assets
+
+Key Features
+-----------
+1. User Section:
+   - Chat interface
+   - User authentication
+   - Profile management
+   - Settings
+   - FAQ and support
+
+2. Admin Section:
+   - Dashboard
+   - User management
+   - Content management
+   - Analytics
+   - System settings
+
+3. Shared Features:
+   - Authentication
+   - Routing
+   - State management
+   - Utility functions
+   - Styling (Tailwind CSS)
+
+Technology Stack
+--------------
+- React
+- Vite
+- Tailwind CSS
+- Firebase
+- React Router
+- Custom hooks and contexts 

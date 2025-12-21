@@ -1,0 +1,260 @@
+.profile-page {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  padding: 20px;
+}
+body.dark .profile-page {
+  background-color: #171717;
+}
+
+.profile-header {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  padding: 0 20px;
+}
+
+.profile-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.profile-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 1px 3px var(--profile-shadow);
+  border: 2px solid var(--profile-border);
+}
+body.dark .profile-card {
+  background: #212121;
+}
+
+.profile-info {
+  padding: 13px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.profile-avatar-section {
+  margin-bottom: 24px;
+}
+
+.avatar-container {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto;
+}
+
+.profile-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--card-bg);
+  box-shadow: 0 2px 8px var(--profile-shadow);
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+.profile-avatar-placeholder {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 600;
+  border: 3px solid var(--card-bg);
+  box-shadow: 0 2px 8px var(--profile-shadow);
+}
+
+.avatar-edit-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  border: 2px solid var(--card-bg);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.avatar-edit-button:hover {
+  background: var(--primary-hover);
+}
+
+.avatar-edit-button:disabled {
+  background: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+.upload-progress {
+  width: 100%;
+  max-width: 200px;
+  height: 4px;
+  background: var(--bg-secondary);
+  border-radius: 2px;
+  margin: 12px auto 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.profile-details {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.profile-name {
+  margin-bottom: 8px;
+}
+
+.profile-name h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+}
+
+.profile-username {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.profile-meta {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.profile-edit-section {
+  padding: 32px;
+}
+
+.profile-edit-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  color: var(--text-primary);
+  transition: all 0.2s;
+  background: var(--input-bg);
+}
+
+.form-group input:hover {
+  border-color: var(--primary-color);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1);
+}
+
+.input-disabled {
+  background-color: var(--bg-secondary) !important;
+  cursor: not-allowed;
+  color: var(--text-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+.input-disabled:hover {
+  border-color: var(--border-color) !important;
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 14px;
+  margin: 16px 0;
+  text-align: center;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.cancel-button,
+.save-button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid var(--border-color);
+}
+
+.cancel-button {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+.cancel-button:hover {
+  background: var(--hover-bg);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.save-button {
+  background: var(--primary-color);
+  color: var(--text-primary);
+  border: 1px solid var(--primary-color);
+}
+
+.save-button:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+/* Nếu có class .profile-feedback hoặc .feedback-section cho phần góp ý */
+.feedback-section, .profile-feedback {
+  color: var(--text-primary);
+} 
+

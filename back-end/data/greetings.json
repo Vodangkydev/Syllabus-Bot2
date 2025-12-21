@@ -1,0 +1,9 @@
+{
+    "greeting_keywords": ["chào", "xin chào", "hello", "hi", "alo", "ơi", "chào bạn", "chào bot", "chào chatbot", "chào syllasbus", "chào syllasbus-bot", "giúp tôi"],
+    "greeting_messages": [
+        "Xin chào, tôi là chatbot Syllasbus-Bot. Tôi sẵn sàng giúp bạn tra cứu thông tin về các môn học, phương pháp đánh giá, đề cương và cách tính điểm từ khoa Công nghệ thông tin.",
+        "Chào bạn, tôi là Syllasbus-Bot, trợ lý AI của bạn cho các thông tin về môn học, đánh giá, đề cương thuộc khoa Công nghệ thông tin.",
+        "Xin chào! Tôi là Syllasbus-Bot. Có câu hỏi nào về môn học, cách đánh giá hay đề cương của khoa Công nghệ thông tin mà tôi có thể giúp bạn không?",
+        "Rất vui được phục vụ! Tôi là chatbot Syllasbus-Bot chuyên cung cấp thông tin về các môn học, phương thức đánh giá và đề cương chi tiết từ khoa Công nghệ thông tin."
+    ]
+} 

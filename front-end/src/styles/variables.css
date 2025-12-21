@@ -1,0 +1,97 @@
+/* Theme variables */
+:root[data-theme="light"] {
+  /* Base colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0f2f5;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --border-color: #d1d5db;
+  
+  /* Component specific */
+  --sidebar-bg: #f0f2f5;
+  --chat-bg: #ffffff;
+  --input-bg: #ffffff;
+  --hover-bg: #e6e8eb;
+  --button-text: #1f2937;
+  --chat-text: #1f2937;
+  --menu-text: #1f2937;
+  --menu-hover: #e6e8eb;
+  --message-user-bg: #e6e8eb;
+  --message-assistant-bg: #ffffff;
+  --chat-input-bg: #ffffff;
+  --chat-input-border: #d1d5db;
+  --chat-input-text: #1f2937;
+  --icon-color: #4b5563;
+  --new-chat-button-bg: #ffffff;
+  --new-chat-button-hover: #e6e8eb;
+  --scrollbar-thumb: rgba(0, 0, 0, 0.3);
+  --sidebar-actions-bg: #F9F9F9;
+  --chat-container-bg: #FFFFFF;
+  
+  /* Settings specific */
+  --card-bg: #ffffff;
+  --btn-bg: #e6e8eb;
+  --btn-danger: #dc2626;
+  --btn-text: #1f2937;
+  
+  /* Profile specific */
+  --profile-bg: #f0f2f5;
+  --profile-card-bg: #ffffff;
+  --profile-border: #d1d5db;
+  --profile-shadow: rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="dark"] {
+  /* Base colors */
+  --bg-primary: #212121;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #bfbfbf;
+  --border-color: rgba(255, 255, 255, 0.2);
+  
+  /* Component specific */
+  --chat-bg: #212121;
+  --input-bg: #2d2d2d;
+  --hover-bg: rgba(255, 255, 255, 0.15);
+  --button-text: #ffffff;
+  --chat-text: #ffffff;
+  --menu-text: #ffffff;
+  --menu-hover: #2d2d2d;
+  --message-user-bg: #2d2d2d;
+  --message-assistant-bg: #212121;
+  --chat-input-bg: #2d2d2d;
+  --chat-input-border: #404040;
+  --chat-input-text: #ffffff;
+  --icon-color: #bfbfbf;
+  --new-chat-button-bg: #2d2d2d;
+  --new-chat-button-hover: #404040;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.4);
+  --sidebar-actions-bg: #171717;
+  --chat-container-bg: #212121;
+  
+  /* Settings specific */
+  --card-bg: #2d2d2d;
+  --btn-bg: #404040;
+  --btn-danger: #ff4d4d;
+  --btn-text: #ffffff;
+  
+  /* Profile specific */
+  --profile-bg: #000000;
+  --profile-card-bg: #2d2d2d;
+  --profile-border: #404040;
+  --profile-shadow: rgba(0, 0, 0, 0.4);
+} 
+.sidebar {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark mode */
+:root[data-theme="dark"] .sidebar {
+  background-color: #171717;
+  color: #ffffff;
+}
+:root[data-theme="light"] .sidebar {
+  background-color: #F9F9F9;
+  color: #ffffff;
+}

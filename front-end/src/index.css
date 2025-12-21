@@ -1,0 +1,115 @@
+/* Import variables and common styles */
+@import './styles/variables.css';
+@import './styles/common.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Additional global styles can be added here */
+
+:root {
+  --background-color: #1a1a1a;
+  --text-color: #ffffff;
+  --border-color: #2d2d2d;
+  --hover-color: #2d2d2d;
+  --success-color: #1a7f37;
+  --error-color: #7f1a1a;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+* {
+  box-sizing: border-box;
+  caret-color: transparent !important;
+}
+
+/* Modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hover-color);
+}
+
+/* Transitions */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+}
+
+/* Focus styles */
+:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Button reset */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  caret-color: transparent !important;
+}
+
+/* Textarea reset */
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  caret-color: auto !important;
+}
+
+.sidebar *:focus,
+.sidebar *:active {
+  outline: none !important;
+  box-shadow: none !important;
+  background: inherit !important;
+}
+
+/* Hide caret for all elements */
+* {
+  caret-color: transparent !important;
+}
+
+/* Enable caret for input and textarea */
+input, textarea {
+  caret-color: auto !important;
+}
