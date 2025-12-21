@@ -1,8 +1,5 @@
 fastapi==0.115.9
-uvicorn==0.22.0
-pydantic==1.10.12
-requests==2.31.0
-python-multipart==0.0.9
+uvicorn==0.34.2
 langchain==0.3.25
 langchain-community==0.3.24
 langchain-core==0.3.61
@@ -10,7 +7,9 @@ langchain-chroma==0.2.4
 chromadb==1.0.10
 unstructured==0.17.2
 pypdf==5.5.0
-firebase-admin==7.0.0
+requests==2.31.0
+python-multipart==0.0.9
+firebase-admin==6.4.0
 langchain-huggingface==0.2.0
 python-dotenv==1.0.1
 matplotlib==3.8.0
