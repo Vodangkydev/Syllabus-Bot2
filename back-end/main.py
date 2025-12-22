@@ -79,12 +79,12 @@ cors_origins = os.environ.get("CORS_ORIGINS", "http://localhost:5173").split(","
 cors_origins = [origin.strip() for origin in cors_origins]
 
 app.add_middleware(
-    CORSMiddleware,
-    allow_origins=cors_origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+      CORSMiddleware,
+      allow_origins=["*"],  # Hoặc chính xác domain FE của bạn
+      allow_credentials=True,
+      allow_methods=["*"],
+      allow_headers=["*"],
+  )
 
 # Mount static files
 app.mount("/static", StaticFiles(directory="."), name="static")
