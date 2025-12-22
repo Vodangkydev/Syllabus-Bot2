@@ -51,13 +51,20 @@ function AdminFeedbackPage() {
           "Authorization": `Bearer ${token}`
         }
       });
+      const contentType = response.headers.get("content-type") || "";
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || "Failed to fetch feedbacks");
+        if (contentType.includes("application/json")) {
+          const errorData = await response.json();
+          throw new Error(errorData.detail || "Failed to fetch feedbacks");
+        } else {
+          const text = await response.text();
+          throw new Error("Không nhận được JSON từ backend:\n" + text);
+        }
       }
-      const data = await response.json();
-      
-      // Sort feedbacks by timestamp in descending order
+      if (contentType.includes("application/json")) {
+        const data = await response.json();
+        // Sort feedbacks by timestamp in descending order
+
       let sortedFeedbacks = data.feedbacks.sort((a, b) => {
         const dateA = new Date(a.timestamp || a.created_at);
         const dateB = new Date(b.timestamp || b.created_at);
@@ -115,10 +122,15 @@ function AdminFeedbackPage() {
         },
         body: JSON.stringify({ status: newStatus }),
       });
-
+      const contentType = response.headers.get("content-type") || "";
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || "Failed to update status");
+        if (contentType.includes("application/json")) {
+          const errorData = await response.json();
+          throw new Error(errorData.detail || "Failed to update status");
+        } else {
+          const text = await response.text();
+          throw new Error("Không nhận được JSON từ backend:\n" + text);
+        }
       }
 
       // Refresh feedbacks after update
