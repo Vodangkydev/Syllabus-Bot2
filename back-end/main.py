@@ -75,8 +75,15 @@ except Exception as e:
 
 # Configure CORS
 # Read allowed origins from environment variable or use default
-cors_origins = os.environ.get("CORS_ORIGINS", "http://localhost:5173").split(",")
-cors_origins = [origin.strip() for origin in cors_origins]
+cors_origins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:8000",
+    "https://syllabus-bot.onrender.com",
+    "https://263eedb1c865.ngrok-free.app"
+]
+# Hãy thay URL ngrok này đúng với URL thực tế khi bạn start ngrok mới.
 
 app.add_middleware(
     CORSMiddleware,
