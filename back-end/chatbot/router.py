@@ -387,7 +387,19 @@ async def ask_stream(question: str, email: str = None, provider: str = "huggingf
             logging.error(f"Error retrieving chat history for {email}: {str(e)}")
             chat_history = []
 
-    return StreamingResponse(stream_answer(question, email, chat_history, provider), media_type="text/event-stream")
+    headers = {
+        "Cache-Control": "no-cache",
+        "Content-Type": "text/event-stream",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Methods": "*"
+    }
+    return StreamingResponse(
+        stream_answer(question, email, chat_history, provider),
+        media_type="text/event-stream",
+        headers=headers
+    )
 
 class ArchiveChatRequest(BaseModel):
     email: str
