@@ -78,15 +78,13 @@ except Exception as e:
 cors_origins = os.environ.get("CORS_ORIGINS", "http://localhost:5173").split(",")
 cors_origins = [origin.strip() for origin in cors_origins]
 
-    from fastapi.middleware.cors import CORSMiddleware
-
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=["https://syllabus-bot.onrender.com"],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=cors_origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Mount static files
 app.mount("/static", StaticFiles(directory="."), name="static")

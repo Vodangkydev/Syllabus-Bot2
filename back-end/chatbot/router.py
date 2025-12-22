@@ -372,22 +372,34 @@ def format_chat_history(chat_history: list) -> str:
 @router.get("/ask_stream")
 async def ask_stream(question: str, email: str = None, provider: str = "huggingface"):
     global vectorstore
-    if vectorstore is None and not is_greeting(question):
-        try:
-            vectorstore = get_vectorstore()
-        except Exception as e:
-            error_message = {'type': 'error', 'message': 'Vectorstore chưa sẵn sàng. Vui lòng chạy ingest.py trước.'}
-            return StreamingResponse(iter([f"data: {json.dumps(error_message)}\n\n", "data: {\"type\": \"complete\"}\n\n"]), media_type="text/event-stream")
+    try:
+        if vectorstore is None and not is_greeting(question):
+            try:
+                vectorstore = get_vectorstore()
+            except Exception as e:
+                error_message = {'type': 'error', 'message': f'Vectorstore chưa sẵn sàng. Lỗi: {str(e)}'}
+                return StreamingResponse(iter([f"data: {json.dumps(error_message)}\n\n", "data: {\"type\": \"complete\"}\n\n"]), media_type="text/event-stream")
 
-    chat_history = [] # Use a list to store history objects
-    if email:
-        try:
-            chat_history = await asyncio.get_event_loop().run_in_executor(None, get_chat_history, email, 5)
-        except Exception as e:
-            logging.error(f"Error retrieving chat history for {email}: {str(e)}")
-            chat_history = []
+        chat_history = []
+        if email:
+            try:
+                chat_history = await asyncio.get_event_loop().run_in_executor(None, get_chat_history, email, 5)
+            except Exception as e:
+                logging.error(f"Error retrieving chat history for {email}: {str(e)}")
+                chat_history = []
+        # ĐẢM BẢO luôn trả về lỗi nếu stream_answer crash giữa chừng
+        async def safe_stream():
+            try:
+                async for chunk in stream_answer(question, email, chat_history, provider):
+                    yield chunk
+            except Exception as e:
+                logging.error(f"stream_answer crashed: {str(e)}")
+                yield f"data: {json.dumps({'type': 'error', 'message': str(e)})}\n\n"
+        return StreamingResponse(safe_stream(), media_type="text/event-stream")
+    except Exception as e:
+        error_message = {'type': 'error', 'message': f'Lỗi không xác định: {str(e)}'}
+        return StreamingResponse(iter([f"data: {json.dumps(error_message)}\n\n", "data: {\"type\": \"complete\"}\n\n"]), media_type="text/event-stream")
 
-    return StreamingResponse(stream_answer(question, email, chat_history, provider), media_type="text/event-stream")
 
 class ArchiveChatRequest(BaseModel):
     email: str
