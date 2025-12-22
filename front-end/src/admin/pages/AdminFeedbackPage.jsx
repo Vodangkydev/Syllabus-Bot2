@@ -37,73 +37,9 @@ function AdminFeedbackPage() {
     fetchFeedbacks();
   }, [timeFilter]);
 
-  const fetchFeedbacks = async () => {
-    try {
-      setLoading(true);
-      const user = auth.currentUser;
-      if (!user) {
-        throw new Error("User not authenticated");
-      }
-      
-      const token = await user.getIdToken();
-      const response = await fetch(`${API_URL}/admin/feedbacks`, {
-        headers: {
-          "Authorization": `Bearer ${token}`
-        }
-      });
-      const contentType = response.headers.get("content-type") || "";
-      if (!response.ok) {
-        if (contentType.includes("application/json")) {
-          const errorData = await response.json();
-          throw new Error(errorData.detail || "Failed to fetch feedbacks");
-        } else {
-          const text = await response.text();
-          throw new Error("Không nhận được JSON từ backend:\n" + text);
-        }
-      }
-      if (contentType.includes("application/json")) {
-        const data = await response.json();
-        // Sort feedbacks by timestamp in descending order
+  
+const fetchFeedbacks = async () => {  try {    setLoading(true);    const user = auth.currentUser;    if (!user) throw new Error("User not authenticated");    const token = await user.getIdToken();    const response = await fetch(`${API_URL}/admin/feedbacks`, {      headers: { "Authorization": `Bearer ${token}` }    });    const contentType = response.headers.get("content-type") || "";    if (!response.ok) {      if (contentType.includes("application/json")) {        const errorData = await response.json();        throw new Error(errorData.detail || "Failed to fetch feedbacks");      } else {        const text = await response.text();        throw new Error("Không nhận được JSON từ backend:\n" + text);      }    }    if (contentType.includes("application/json")) {      const data = await response.json();      let sortedFeedbacks = data.feedbacks.sort((a, b) => {        const dateA = new Date(a.timestamp || a.created_at);        const dateB = new Date(b.timestamp || b.created_at);        return dateB - dateA;      });      if (timeFilter === 'last_week') {        const now = new Date();        const startOfLastWeek = new Date(now);        startOfLastWeek.setDate(now.getDate() - now.getDay() - 7);        startOfLastWeek.setHours(0, 0, 0, 0);        const endOfLastWeek = new Date(startOfLastWeek);        endOfLastWeek.setDate(startOfLastWeek.getDate() + 6);        endOfLastWeek.setHours(23, 59, 59, 999);        sortedFeedbacks = sortedFeedbacks.filter(feedback => {          const feedbackDate = new Date(feedback.timestamp || feedback.created_at);          return feedbackDate >= startOfLastWeek && feedbackDate <= endOfLastWeek;        });      } else if (timeFilter === 'last_month') {        const now = new Date();        const startOfLastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);        const endOfLastMonth = new Date(now.getFullYear(), now.getMonth(), 0, 23, 59, 59, 999);        sortedFeedbacks = sortedFeedbacks.filter(feedback => {          const feedbackDate = new Date(feedback.timestamp || feedback.created_at);          return feedbackDate >= startOfLastMonth && feedbackDate <= endOfLastMonth;        });      }      setFeedbacks(sortedFeedbacks);    }  } catch (err) {    setError(err.message);  } finally {    setLoading(false);  }};
 
-      let sortedFeedbacks = data.feedbacks.sort((a, b) => {
-        const dateA = new Date(a.timestamp || a.created_at);
-        const dateB = new Date(b.timestamp || b.created_at);
-        return dateB - dateA;
-      });
-
-      // Apply time filter
-      if (timeFilter === 'last_week') {
-        const now = new Date();
-        const startOfLastWeek = new Date(now);
-        startOfLastWeek.setDate(now.getDate() - now.getDay() - 7); // Start of last week
-        startOfLastWeek.setHours(0, 0, 0, 0);
-        
-        const endOfLastWeek = new Date(startOfLastWeek);
-        endOfLastWeek.setDate(startOfLastWeek.getDate() + 6);
-        endOfLastWeek.setHours(23, 59, 59, 999);
-
-        sortedFeedbacks = sortedFeedbacks.filter(feedback => {
-          const feedbackDate = new Date(feedback.timestamp || feedback.created_at);
-          return feedbackDate >= startOfLastWeek && feedbackDate <= endOfLastWeek;
-        });
-      } else if (timeFilter === 'last_month') {
-        const now = new Date();
-        const startOfLastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
-        const endOfLastMonth = new Date(now.getFullYear(), now.getMonth(), 0, 23, 59, 59, 999);
-
-        sortedFeedbacks = sortedFeedbacks.filter(feedback => {
-          const feedbackDate = new Date(feedback.timestamp || feedback.created_at);
-          return feedbackDate >= startOfLastMonth && feedbackDate <= endOfLastMonth;
-        });
-      }
-      
-      setFeedbacks(sortedFeedbacks);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const updateStatus = async (feedbackId, newStatus) => {
     try {
