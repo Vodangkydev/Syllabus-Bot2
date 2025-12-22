@@ -80,7 +80,7 @@ cors_origins = [origin.strip() for origin in cors_origins]
 
 app.add_middleware(
       CORSMiddleware,
-      allow_origins=["*"],  # Hoặc chính xác domain FE của bạn
+      allow_origins=["*"],
       allow_credentials=True,
       allow_methods=["*"],
       allow_headers=["*"],
