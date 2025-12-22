@@ -168,7 +168,7 @@ function ChatBot() {
 
       // Sử dụng endpoint /chatbot/ask_stream với provider parameter
       const providerParam = llmProvider === 'huggingface' ? 'huggingface' : 'ollama';
-      const response = await fetch(`http://localhost:8000/chatbot/ask_stream?question=${encodeURIComponent(message)}&provider=${encodeURIComponent(providerParam)}`, {
+      const response = await fetch(`${API_URL}/chatbot/ask_stream?question=${encodeURIComponent(message)}&provider=${encodeURIComponent(providerParam)}`, {
         method: "GET",
         headers: {
           "Content-Type": "text/event-stream",
@@ -515,7 +515,7 @@ function ChatBot() {
     
     try {
       const token = await user.getIdToken();
-      const response = await fetch('http://localhost:8000/user/archived-chats', {
+      const response = await fetch(`${API_URL}/user/archived-chats`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -864,7 +864,7 @@ function ChatBot() {
 
     try {
       const providerParam = llmProvider === 'huggingface' ? 'huggingface' : 'ollama';
-      const response = await fetch(`http://localhost:8000/chatbot/ask_stream?question=${encodeURIComponent(editingMessageContent)}&email=${encodeURIComponent(user?.email || "")}&provider=${encodeURIComponent(providerParam)}`, {
+      const response = await fetch(`${API_URL}/chatbot/ask_stream?question=${encodeURIComponent(editingMessageContent)}&email=${encodeURIComponent(user?.email || "")}&provider=${encodeURIComponent(providerParam)}`, {
         method: "GET",
         headers: {
           "Content-Type": "text/event-stream",
@@ -1046,7 +1046,7 @@ function ChatBot() {
   const handleShareChat = async (chatId) => {
     try {
       const token = await user.getIdToken();
-      const response = await fetch(`http://localhost:8000/user/share-chat/${chatId}`, {
+      const response = await fetch(`${API_URL}/user/share-chat/${chatId}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

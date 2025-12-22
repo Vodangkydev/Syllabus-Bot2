@@ -45,7 +45,7 @@ function AdminFeedbackPage() {
       }
       
       const token = await user.getIdToken();
-      const response = await fetch(`http://localhost:8000/admin/feedbacks`, {
+      const response = await fetch(`${API_URL}/admin/feedbacks`, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
@@ -106,7 +106,7 @@ function AdminFeedbackPage() {
       }
       
       const token = await user.getIdToken();
-      const response = await fetch(`http://localhost:8000/admin/feedbacks/${feedbackId}/status`, {
+      const response = await fetch(`${API_URL}/admin/feedbacks/${feedbackId}/status`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -144,7 +144,7 @@ function AdminFeedbackPage() {
       }
       
       const token = await user.getIdToken();
-      const response = await fetch(`http://localhost:8000/admin/feedbacks/${feedbackId}`, {
+      const response = await fetch(`${API_URL}/admin/feedbacks/${feedbackId}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`

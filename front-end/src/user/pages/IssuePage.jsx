@@ -20,7 +20,7 @@ function IssuePage() {
     if (!user) return;
 
     try {
-      const response = await fetch("http://localhost:8000/user/feedback/history", {
+      const response = await fetch(`${API_URL}/user/feedback/history`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +67,7 @@ function IssuePage() {
     const user = auth.currentUser;
     if (!user) return;
     try {
-      const response = await fetch("http://localhost:8000/user/feedback/history", {
+      const response = await fetch(`${API_URL}/user/feedback/history`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -126,7 +126,7 @@ function IssuePage() {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/user/feedback", {
+      const response = await fetch(`${API_URL}/user/feedback`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -166,7 +166,7 @@ function IssuePage() {
       return;
     }
     try {
-      const response = await fetch("http://localhost:8000/user/feedback/history", {
+      const response = await fetch(`${API_URL}/user/feedback/history`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

@@ -69,7 +69,7 @@ const Settings = ({ onClose, onSelectArchivedChat }) => {
       await clearHistory();
       
       // Gọi API backend để xóa dữ liệu
-      const response = await fetch(`http://localhost:8000/user/delete-data`, {
+      const response = await fetch(`${API_URL}/user/delete-data`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ const Settings = ({ onClose, onSelectArchivedChat }) => {
     setIsDeletingAccount(true);
     try {
       // Gọi API backend để xóa tài khoản và tất cả dữ liệu
-      const response = await fetch(`http://localhost:8000/user/account`, {
+      const response = await fetch(`${API_URL}/user/account`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${await user.getIdToken()}`

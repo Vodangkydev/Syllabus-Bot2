@@ -35,7 +35,7 @@ function AdminAnalysisPage() {
       
       const token = await user.getIdToken();
       console.log("Fetching analysis data...");
-      const response = await fetch("http://localhost:8000/admin/analysis", {
+      const response = await fetch(`${API_URL}/admin/analysis`, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
@@ -181,7 +181,7 @@ function AdminAnalysisPage() {
               </h2>
               <div className="aspect-w-16 aspect-h-9">
                 <img
-                  src={`http://localhost:8000/static/top_questions.png?t=${new Date().getTime()}`} // Append timestamp to prevent caching
+                  src={`${API_URL}/static/top_questions.png?t=${new Date().getTime()}`} // Append timestamp to prevent caching
                   alt="Top Questions Visualization"
                   className="object-contain w-full h-full"
                 />

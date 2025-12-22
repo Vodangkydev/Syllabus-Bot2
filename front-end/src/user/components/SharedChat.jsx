@@ -22,7 +22,7 @@ const SharedChat = () => {
         }
 
         const token = await user.getIdToken();
-        const response = await fetch(`http://localhost:8000/user/shared-chat/${shareId}`, {
+        const response = await fetch(`${API_URL}/user/shared-chat/${shareId}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

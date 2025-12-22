@@ -12,7 +12,7 @@ export default function ArchiveChatsModal({ open, onClose, onSelectChat }) {
     
     try {
       const token = await user.getIdToken();
-      const response = await fetch("http://localhost:8000/user/archived-chats", {
+      const response = await fetch(`${API_URL}/user/archived-chats`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -38,7 +38,7 @@ export default function ArchiveChatsModal({ open, onClose, onSelectChat }) {
     
     try {
       const token = await user.getIdToken();
-      const response = await fetch(`http://localhost:8000/user/unarchive-chat/${chat.id}`, {
+      const response = await fetch(`${API_URL}/user/unarchive-chat/${chat.id}`, {
         method: 'POST',
         headers: { 
           'Authorization': `Bearer ${token}`,
@@ -63,7 +63,7 @@ export default function ArchiveChatsModal({ open, onClose, onSelectChat }) {
     
     try {
       const token = await user.getIdToken();
-      const response = await fetch(`http://localhost:8000/user/delete-chat/${chat.id}`, {
+      const response = await fetch(`${API_URL}/user/delete-chat/${chat.id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

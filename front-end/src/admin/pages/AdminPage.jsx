@@ -32,7 +32,7 @@ const AdminPage = () => {
       }
       
       const token = await user.getIdToken();
-      const response = await fetch("http://localhost:8000/admin/users", {
+      const response = await fetch(`${API_URL}/admin/users`, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
@@ -103,7 +103,7 @@ const AdminPage = () => {
         }
 
         const token = await user.getIdToken();
-        const response = await fetch(`http://localhost:8000/admin/users/${userId}/admin`, {
+        const response = await fetch(`${API_URL}/admin/users/${userId}/admin`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -138,7 +138,7 @@ const AdminPage = () => {
       }
       
       const token = await user.getIdToken();
-      const response = await fetch(`http://localhost:8000/admin/users/${deleteModal.userId}`, {
+      const response = await fetch(`${API_URL}/admin/users/${deleteModal.userId}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`

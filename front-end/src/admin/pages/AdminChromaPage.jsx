@@ -34,7 +34,7 @@ function AdminChromaPage() {
       }
       
       const token = await user.getIdToken();
-      const response = await fetch("http://localhost:8000/admin/documents", {
+      const response = await fetch(`${API_URL}/admin/documents`, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
@@ -96,7 +96,7 @@ function AdminChromaPage() {
         });
       }, 200);
 
-      const response = await fetch("http://localhost:8000/admin/upload", {
+      const response = await fetch(`${API_URL}/admin/upload`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`
@@ -150,7 +150,7 @@ function AdminChromaPage() {
       }
       
       const token = await user.getIdToken();
-      const response = await fetch(`http://localhost:8000/admin/search?q=${encodeURIComponent(searchQuery)}`, {
+      const response = await fetch(`${API_URL}/admin/search?q=${encodeURIComponent(searchQuery)}`, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
@@ -180,7 +180,7 @@ function AdminChromaPage() {
       }
       
       const token = await user.getIdToken();
-      const response = await fetch(`http://localhost:8000/admin/delete?source=${encodeURIComponent(source)}`, {
+      const response = await fetch(`${API_URL}/admin/delete?source=${encodeURIComponent(source)}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`
