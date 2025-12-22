@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { FiX } from "react-icons/fi";
 import "../../styles/Settings.css";
 import { useAuth } from "../../context/AuthContext";
+import API_URL from '../../config/api';
 import { useNavigate } from "react-router-dom";
 import { useChatHistory } from "../../hooks/useChatHistory";
 import { deleteAllChats, deleteCurrentUser } from "../../firebase";

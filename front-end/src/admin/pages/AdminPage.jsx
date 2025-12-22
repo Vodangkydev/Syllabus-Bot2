@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API_URL from '../../config/api';
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { IoClose } from "react-icons/io5";

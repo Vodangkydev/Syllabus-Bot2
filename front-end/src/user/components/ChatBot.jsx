@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import API_URL from '../../config/api';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane, faSpinner, faPlus, faMessage, faEllipsisVertical, faArchive, faShare } from "@fortawesome/free-solid-svg-icons";
 import "../../styles/ChatBot.css";

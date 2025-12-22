@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import API_URL from '../../config/api';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { FiArrowLeft, FiClock, FiUser } from 'react-icons/fi';
