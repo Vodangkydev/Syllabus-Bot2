@@ -55,3 +55,6 @@ Image hiện tại: **8.0 GB** - Vượt quá giới hạn 4.0 GB của Railway 
 - ✅ `back-end/railway.toml` - Builder = nixpacks
 - ✅ `back-end/requirements.txt` - Dependencies (đã loại bỏ matplotlib)
 
+
+
+

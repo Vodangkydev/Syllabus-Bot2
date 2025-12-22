@@ -1,14 +1,10 @@
 """
 Cấu hình ChromaDB Cloud Connection
 """
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
+
 from dotenv import load_dotenv
 load_dotenv()
->>>>>>> 90793e4 (dsa22358u2v2)
->>>>>>> e42e8b0 (jdsm)
+
 import os
 import chromadb
 from langchain_chroma import Chroma

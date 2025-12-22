@@ -38,3 +38,6 @@ Sau khi deploy, check logs:
 - ✅ `back-end/Procfile` - Start command
 - ⚠️ `nixpacks.toml` (root) - Chỉ dùng nếu Root Directory = root
 
+
+
+

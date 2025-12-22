@@ -81,3 +81,6 @@ Tách thành nhiều microservices:
 
 Cần thay đổi kiến trúc hoặc upgrade plan.
 
+
+
+
