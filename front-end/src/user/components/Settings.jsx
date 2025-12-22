@@ -162,7 +162,7 @@ const Settings = ({ onClose, onSelectArchivedChat }) => {
   const handleRestoreArchivedChat = async (chat) => {
     if (!user) return;
     const token = await user.getIdToken();
-    await fetch(`http://localhost:8000/user/archive-chat/${chat.id}`, {
+    await fetch(`${API_URL}/user/archive-chat/${chat.id}`, {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${token}` },
       body: JSON.stringify({ archived: false })
@@ -174,7 +174,7 @@ const Settings = ({ onClose, onSelectArchivedChat }) => {
   const handleDeleteArchivedChat = async (chat) => {
     if (!user) return;
     const token = await user.getIdToken();
-    await fetch(`http://localhost:8000/user/delete-chat/${chat.id}`, {
+    await fetch(`${API_URL}/user/delete-chat/${chat.id}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
