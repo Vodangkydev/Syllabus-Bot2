@@ -407,7 +407,6 @@ body {
 
 .chat-time {
   font-size: 0.75rem;
-  color: #6b7280;
   opacity: 0.8;
 }
 
@@ -3071,7 +3070,7 @@ p, span, div {
 }
 
 .chat-history-item.active {
-  background-color: #374151; /* hoặc var(--hover-bg) nếu bạn muốn dùng biến */
+  background-color: #6a6c6e; /* hoặc var(--hover-bg) nếu bạn muốn dùng biến */
   color: #fff;
 }
 .chat-history-item.active .chat-title {
