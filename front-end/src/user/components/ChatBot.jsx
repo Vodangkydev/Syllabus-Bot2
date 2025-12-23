@@ -82,8 +82,8 @@ function ChatBot() {
   const [shareLink, setShareLink] = useState('');
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
   const [llmProvider, setLlmProvider] = useState(() => {
-    // Load from localStorage or default to 'ollama'
-    return localStorage.getItem('llmProvider') || 'ollama';
+    // Load from localStorage hoặc mặc định 'huggingface'
+    return localStorage.getItem('llmProvider') || 'huggingface';
   });
   const [showProviderDropdown, setShowProviderDropdown] = useState(false);
   
