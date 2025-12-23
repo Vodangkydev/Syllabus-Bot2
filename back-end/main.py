@@ -75,23 +75,24 @@ except Exception as e:
 
 # Configure CORS
 # Read allowed origins from environment variable or use default
-cors_origins = [
-    "http://localhost:5173",
-    "http://localhost:3000",
-    "http://127.0.0.1:5173",
-    "http://127.0.0.1:8000",
-    "https://syllabus-bot.onrender.com",
-    "https://263eedb1c865.ngrok-free.app"
-]
-# Hãy thay URL ngrok này đúng với URL thực tế khi bạn start ngrok mới.
-
+# TẠM thời cho phép mọi Origin (phục vụ phát triển, KHÔNG dùng cho production)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=cors_origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Middleware tự động thêm header ngrok-skip-browser-warning khi ENV=local
+from fastapi import Request
+
+@app.middleware("http")
+async def add_ngrok_skip_warning_header(request: Request, call_next):
+    response = await call_next(request)
+    if os.environ.get("ENV") == "local":
+        response.headers["ngrok-skip-browser-warning"] = "true"
+    return response
 
 # Mount static files
 app.mount("/static", StaticFiles(directory="."), name="static")

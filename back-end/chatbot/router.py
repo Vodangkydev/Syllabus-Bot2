@@ -12,8 +12,10 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from chroma_config import get_vectorstore
 import io
 from pypdf import PdfReader
+from unstructured.partition.auto import partition
 import json
 import asyncio
+from langchain_ollama import OllamaLLM
 from chatbot.hf_llm import HuggingFaceLLM
 from database import save_chat, get_chat_history, archive_chat, unarchive_chat, get_archived_chats
 from phantich import collect_user_questions, analyze_user_questions, visualize_top_questions
@@ -21,8 +23,7 @@ from langchain.prompts import PromptTemplate
 from fastapi.responses import StreamingResponse
 import random
 from collections import Counter
-# matplotlib removed - not needed for production API
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import re
 
 router = APIRouter()
@@ -117,8 +118,16 @@ def get_chatbot_vectorstore():
     from chroma_config import get_vectorstore as get_cloud_vectorstore
     return get_cloud_vectorstore()
 
-# Initialize LLM (lazy loading)
+# Initialize LLMs (lazy loading)
+ollama_llm = None
 hf_llm = None
+
+def get_ollama_llm():
+    """Get or create Ollama LLM instance"""
+    global ollama_llm
+    if ollama_llm is None:
+        ollama_llm = OllamaLLM(model="llama3.2", timeout=30, temperature=0.01)
+    return ollama_llm
 
 def get_hf_llm():
     """Get or create Hugging Face LLM instance"""
@@ -134,6 +143,13 @@ def get_hf_llm():
             temperature=0.01
         )
     return hf_llm
+
+def get_llm(provider: str = "huggingface"):
+    """Get LLM instance based on provider"""
+    if provider.lower() == "huggingface" or provider.lower() == "hf":
+        return get_hf_llm()
+    else:
+        return get_ollama_llm()
 
 # Vectorstore sẽ được load khi cần (lazy loading từ cloud)
 vectorstore = None
@@ -293,8 +309,8 @@ async def stream_answer(question: str, email: str = None, chat_history: list = N
             chat_history=history_text
         )
         
-        # Chỉ dùng HuggingFace LLM (provider giữ để tương thích)
-        llm = get_hf_llm()
+        # Get the appropriate LLM based on provider
+        llm = get_llm(provider)
         
         async for chunk in llm.astream(prompt_with_history):
             if isinstance(chunk, str):
@@ -369,9 +385,18 @@ def format_chat_history(chat_history: list) -> str:
         
     return history_text
 
+from typing import Optional
+
 @router.get("/ask_stream")
-async def ask_stream(question: str, email: str = None, provider: str = "huggingface"):
+async def ask_stream(
+    question: Optional[str] = None,
+    email: Optional[str] = None,
+    provider: str = "huggingface"
+):
     global vectorstore
+    if question is None:
+        return StreamingResponse(iter([f"data: {json.dumps({'type': 'error', 'message': 'Thiếu tham số question'})}\n\n", "data: {\"type\": \"complete\"}\n\n"]), media_type="text/event-stream")
+
     if vectorstore is None and not is_greeting(question):
         try:
             vectorstore = get_vectorstore()
@@ -387,19 +412,7 @@ async def ask_stream(question: str, email: str = None, provider: str = "huggingf
             logging.error(f"Error retrieving chat history for {email}: {str(e)}")
             chat_history = []
 
-    headers = {
-        "Cache-Control": "no-cache",
-        "Content-Type": "text/event-stream",
-        "Connection": "keep-alive",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "*",
-        "Access-Control-Allow-Methods": "*"
-    }
-    return StreamingResponse(
-        stream_answer(question, email, chat_history, provider),
-        media_type="text/event-stream",
-        headers=headers
-    )
+    return StreamingResponse(stream_answer(question, email, chat_history, provider), media_type="text/event-stream")
 
 class ArchiveChatRequest(BaseModel):
     email: str
