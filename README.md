@@ -1,5 +1,10 @@
 # Syllabus-Bot
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f4b81ee2-fbca-4885-bd41-609fbc50152b" />
+<img width="1920" height="876" alt="image" src="https://github.com/user-attachments/assets/eabd9c2f-3cc0-4ee8-a617-3565cc31c9eb" />
+<img width="1920" height="873" alt="image" src="https://github.com/user-attachments/assets/dd3c2f26-7475-4e92-8054-26fb54e0d7bb" />
+<img width="1916" height="882" alt="image" src="https://github.com/user-attachments/assets/b760ad07-22d9-4a36-8ae2-7e07807b60c4" />
+<img width="259" height="492" alt="image" src="https://github.com/user-attachments/assets/7d3adca4-20d9-43a7-8605-afa1968f423d" /> <img width="607" height="372" alt="image" src="https://github.com/user-attachments/assets/3af86ff3-e176-4932-904a-4ebf01984c6b" />
+
 
 Chatbot thông minh giúp sinh viên và giảng viên tra cứu thông tin chi tiết trong đề cương môn học Khoa Công nghệ thông Tin.
 
