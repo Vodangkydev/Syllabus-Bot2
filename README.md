@@ -6,6 +6,10 @@
 <img width="1916" height="882" alt="image" src="https://github.com/user-attachments/assets/b760ad07-22d9-4a36-8ae2-7e07807b60c4" />
 <img width="259" height="492" alt="image" src="https://github.com/user-attachments/assets/7d3adca4-20d9-43a7-8605-afa1968f423d" /> <img width="607" height="372" alt="image" src="https://github.com/user-attachments/assets/3af86ff3-e176-4932-904a-4ebf01984c6b" />
 <admin
+<img width="1910" height="871" alt="image" src="https://github.com/user-attachments/assets/fb852145-56a8-466d-89cd-1f6082072fa3" />
+<img width="1912" height="864" alt="image" src="https://github.com/user-attachments/assets/18c42151-1204-4516-a76a-b681cedc219d" />
+<img width="1914" height="886" alt="image" src="https://github.com/user-attachments/assets/0ff81390-af84-40f6-8354-45bcc82516f7" />
+<img width="1915" height="872" alt="image" src="https://github.com/user-attachments/assets/0b64efd6-076c-4baf-b073-fa9a9c9564cb" />
 
 Chatbot thông minh giúp sinh viên và giảng viên tra cứu thông tin chi tiết trong đề cương môn học Khoa Công nghệ thông Tin.
 
